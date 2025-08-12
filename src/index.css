@@ -2,46 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Design System - all colors in HSL format */
 @layer base {
   :root {
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;
-
     --card: 0 0% 6%;
     --card-foreground: 0 0% 98%;
-
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
-
-    --primary: 141 90% 50%; /* neon green */
+    --primary: 141 90% 50%;
     --primary-foreground: 222 100% 2%;
-
     --secondary: 160 70% 12%;
     --secondary-foreground: 0 0% 98%;
-
     --muted: 160 20% 18%;
     --muted-foreground: 160 10% 70%;
-
     --accent: 141 90% 50%;
     --accent-foreground: 222 100% 2%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 160 14% 20%;
     --input: 160 14% 20%;
     --ring: 141 90% 50%;
-
-    /* Light surfaces for readable inputs/cards */
-    --surface: 0 0% 100%;
-    --surface-foreground: 0 0% 10%;
-
     --radius: 0.75rem;
 
+    /* Sidebar */
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 141 90% 50%;
@@ -59,6 +44,7 @@ All colors MUST be HSL.
     --panel-2: 160 22% 12%;
     --panel-3: 160 24% 14%;
 
+    /* Shadows */
     --shadow-elev: 0 20px 60px -20px hsl(var(--brand) / 0.35);
     --shadow-glow: 0 0 40px hsl(var(--brand-glow) / 0.5);
   }
@@ -66,36 +52,23 @@ All colors MUST be HSL.
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 6.5%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 6.5%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 141 90% 50%;
     --primary-foreground: 222 100% 2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 141 90% 50%;
-
-    /* Light surfaces for readable inputs/cards */
-    --surface: 0 0% 100%;
-    --surface-foreground: 0 0% 10%;
-
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 141 90% 50%;
@@ -127,15 +100,17 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--brand)) 0%, hsl(var(--brand-2)) 100%);
     box-shadow: var(--shadow-glow);
   }
-  .btn-neon:after {
+  .btn-neon::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(400px 200px at var(--x,50%) var(--y,50%), hsl(var(--brand) / 0.25), transparent 40%);
+    background: radial-gradient(400px 200px at var(--x, 50%) var(--y, 50%), hsl(var(--brand) / 0.25), transparent 40%);
     opacity: 0;
-    transition: opacity .25s ease;
+    transition: opacity 0.25s ease;
   }
-  .btn-neon:hover:after { opacity: 1; }
+  .btn-neon:hover::after {
+    opacity: 1;
+  }
 
   .card-omni {
     @apply rounded-xl border bg-card/80 backdrop-blur-md shadow-lg;
@@ -147,29 +122,23 @@ All colors MUST be HSL.
   }
   .story-link > *::after {
     content: "";
-    position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
     background: linear-gradient(90deg, hsl(var(--brand)), transparent);
-    transform: scaleX(0); transform-origin: right; transition: transform .3s ease;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
   }
-  .story-link > *:hover::after { transform: scaleX(1); transform-origin: left; }
-
-  .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
-
-  /* High-contrast input for readability in all modes */
-  .input-contrast {
-    @apply border rounded-md px-3 py-2; 
-    background-color: hsl(var(--surface));
-    color: hsl(var(--surface-foreground));
+  .story-link > *:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 
-  /* Option card buttons styling */
-  .option-card {
-    @apply rounded-lg border transition-transform;
-    background-color: hsl(var(--surface));
-    color: hsl(var(--surface-foreground));
-  }
-  .option-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 3px hsl(var(--brand) / 0.45);
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
   }
 }
+
