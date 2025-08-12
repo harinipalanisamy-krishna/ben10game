@@ -44,6 +44,10 @@
     --panel-2: 160 22% 12%;
     --panel-3: 160 24% 14%;
 
+    /* High-contrast surfaces (for inputs/options) */
+    --surface-contrast: 0 0% 100%;
+    --surface-contrast-foreground: 0 0% 6%;
+
     /* Shadows */
     --shadow-elev: 0 20px 60px -20px hsl(var(--brand) / 0.35);
     --shadow-glow: 0 0 40px hsl(var(--brand-glow) / 0.5);
@@ -81,9 +85,8 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
 }
 
 @layer utilities {
@@ -139,6 +142,35 @@
 
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
+  }
+}
+
+@layer components {
+  /* High-contrast input for readability across themes */
+  .input-contrast {
+    background-color: hsl(var(--surface-contrast));
+    color: hsl(var(--surface-contrast-foreground));
+    @apply w-full rounded-md border px-3 py-2 ring-1 ring-transparent transition focus:outline-none focus:ring-2;
+    border-color: hsl(var(--brand));
+  }
+  .input-contrast::placeholder {
+    color: hsl(0 0% 45%);
+  }
+
+  /* Multiple-choice option card/button */
+  .option-card {
+    background-color: hsl(var(--surface-contrast)) !important;
+    color: hsl(var(--surface-contrast-foreground)) !important;
+    border-color: hsl(var(--brand)) !important;
+    @apply rounded-lg border transition transform duration-150 will-change-transform;
+  }
+  .option-card:hover {
+    @apply scale-[1.02];
+    box-shadow: var(--shadow-glow);
+  }
+  .option-card:focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 2px;
   }
 }
 

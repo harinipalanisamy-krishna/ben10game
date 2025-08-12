@@ -21,7 +21,7 @@ export default function Leaderboard() {
         </div>
       </section>
       <section className="card-omni p-6">
-        <h3 className="font-heading text-lg mb-3">Done by [Name] & [Name]</h3>
+        <h3 className="font-heading text-lg mb-3">Created By</h3>
         <div className="grid grid-cols-2 gap-4">
           <figure className="rounded-lg overflow-hidden border">
             <img src={portrait1} alt="Creator portrait 1 neon" loading="lazy" />

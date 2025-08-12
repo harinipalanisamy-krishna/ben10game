@@ -97,6 +97,7 @@ export default function Game() {
   const [player, setPlayer] = useState<string>(sessionStorage.getItem("player") || "Player One");
   const [mutedState, setMutedState] = useState(false);
   const totalForLevel = level === 1 ? 7 : 10;
+  const [transitionMsg, setTransitionMsg] = useState<string | null>(null);
   const { supported, start, rec } = useSpeech();
 
   useEffect(() => { initAudio(); }, []);
@@ -110,7 +111,8 @@ export default function Game() {
 
   async function loadQs(lv: LevelId) {
     const apiKey = sessionStorage.getItem("OPENAI_API_KEY") || undefined;
-    const batch = await generateQuestions(lv, totalForLevel, used, { apiKey });
+    const count = lv === 1 ? 7 : 10;
+    const batch = await generateQuestions(lv, count, used, { apiKey });
     setQuestions(batch);
     setUsed(new Set([...(used || new Set<string>()), ...batch.map(q=>q.id)]));
     setQIndex(0);
@@ -144,25 +146,35 @@ export default function Game() {
     const next = qIndex + 1;
     const atEnd = next >= totalForLevel;
     if (atEnd) {
-      stopBg();
-      // Save leaderboard
-      const boardRaw = sessionStorage.getItem("leaderboard") || "[]";
-      const board = JSON.parse(boardRaw) as Array<{name:string;score:number;date:string}>;
-      const newScore = score + (isCorrect ? 1 : 0);
-      board.push({ name: player, score: newScore, date: new Date().toISOString() });
-      board.sort((a,b)=> b.score - a.score);
-      sessionStorage.setItem("leaderboard", JSON.stringify(board.slice(0, 10)));
-      playKalamClip();
-    }
-    setTimeout(() => {
-      if (atEnd) {
-        window.location.href = "/leaderboard";
+      // Level transition or final end
+      if ((level ?? 1) < 3) {
+        const nextLevel = ((level ?? 1) + 1) as LevelId;
+        setTransitionMsg(level === 1 ? "Great job! Level 1 complete, get ready for Level 2!" : "Awesome! Level 2 complete, prepare for the final level!");
+        // Keep music playing; just load next level shortly
+        setTimeout(() => {
+          setLevel(nextLevel);
+          loadQs(nextLevel);
+          setTransitionMsg(null);
+        }, 1000);
       } else {
-        setQIndex(next);
-        setOptionsVisible(false);
-        readCurrent(questions[next]);
+        stopBg();
+        // Save leaderboard (final)
+        const boardRaw = sessionStorage.getItem("leaderboard") || "[]";
+        const board = JSON.parse(boardRaw) as Array<{name:string;score:number;date:string}>;
+        const newScore = score + (isCorrect ? 1 : 0);
+        board.push({ name: player, score: newScore, date: new Date().toISOString() });
+        board.sort((a,b)=> b.score - a.score);
+        sessionStorage.setItem("leaderboard", JSON.stringify(board.slice(0, 10)));
+        playKalamClip();
+        // Navigate to end screen immediately
+        window.location.href = "/leaderboard";
       }
-    }, 700);
+      return;
+    }
+    // Advance immediately on answer/timeout
+    setQIndex(next);
+    setOptionsVisible(false);
+    readCurrent(questions[next]);
   }
 
   function selectOption(i: number) {
@@ -231,7 +243,7 @@ export default function Game() {
       <div className="card-omni p-6">
         <div className="flex items-center justify-between">
           <h2 className="font-heading text-xl">Level {level} • Question {qIndex+1} / {totalForLevel}</h2>
-          <Timer seconds={20} onExpire={onExpire} onTick={(s)=>{ if (s===19) setOptionsVisible(true); }} />
+          <Timer key={qIndex} seconds={20} onExpire={onExpire} onTick={(s)=>{ if (s===19) setOptionsVisible(true); }} />
         </div>
         <p className="mt-4 text-lg">{current.prompt}</p>
         <div className="mt-4 grid sm:grid-cols-2 gap-3">
@@ -250,6 +262,13 @@ export default function Game() {
         <div>Player: <span className="font-semibold">{player}</span></div>
         <div>Score: <span className="text-primary font-semibold">{score}</span></div>
       </div>
+      {transitionMsg && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-md">
+          <div className="card-omni p-6 text-center animate-enter">
+            <p className="font-heading text-lg">{transitionMsg}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
