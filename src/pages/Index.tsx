@@ -1,14 +1,22 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import MainLayout from "@/layouts/MainLayout";
+import Game from "@/pages/Game";
+import Projects from "@/pages/Projects";
+import Tasks from "@/pages/Tasks";
+import CalendarPage from "@/pages/CalendarPage";
+import Messages from "@/pages/Messages";
+import Settings from "@/pages/Settings";
+import Leaderboard from "@/pages/Leaderboard";
 
-const Index = () => {
+export default function Index({ page }: { page?: string }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <MainLayout>
+      {(!page || page === "home") && <Game />}
+      {page === "projects" && <Projects />}
+      {page === "tasks" && <Tasks />}
+      {page === "calendar" && <CalendarPage />}
+      {page === "messages" && <Messages />}
+      {page === "settings" && <Settings />}
+      {page === "leaderboard" && <Leaderboard />}
+    </MainLayout>
   );
-};
-
-export default Index;
+}

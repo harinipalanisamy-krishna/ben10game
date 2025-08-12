@@ -8,65 +8,69 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 141 90% 50%; /* neon green */
+    --primary-foreground: 222 100% 2%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 160 70% 12%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 160 20% 18%;
+    --muted-foreground: 160 10% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 141 90% 50%;
+    --accent-foreground: 222 100% 2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 160 14% 20%;
+    --input: 160 14% 20%;
+    --ring: 141 90% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 141 90% 50%;
+    --sidebar-primary-foreground: 222 100% 2%;
+    --sidebar-accent: 160 25% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 160 14% 20%;
+    --sidebar-ring: 141 90% 50%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Ben 10 vibes */
+    --brand: 141 90% 50%;
+    --brand-2: 164 88% 51%;
+    --brand-glow: 141 90% 60%;
+    --panel: 160 20% 10%;
+    --panel-2: 160 22% 12%;
+    --panel-3: 160 24% 14%;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --shadow-elev: 0 20px 60px -20px hsl(var(--brand) / 0.35);
+    --shadow-glow: 0 0 40px hsl(var(--brand-glow) / 0.5);
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222.2 84% 6.5%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222.2 84% 6.5%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 141 90% 50%;
+    --primary-foreground: 222 100% 2%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -82,24 +86,63 @@ All colors MUST be HSL.
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ring: 141 90% 50%;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 141 90% 50%;
+    --sidebar-primary-foreground: 222 100% 2%;
+    --sidebar-accent: 160 25% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 160 14% 20%;
+    --sidebar-ring: 141 90% 50%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+}
+
+@layer utilities {
+  .bg-omnitrix {
+    background-image:
+      radial-gradient(circle at 50% 50%, hsl(var(--brand) / 0.1), transparent 40%),
+      repeating-linear-gradient(45deg, hsl(var(--panel-3)) 0, hsl(var(--panel-3)) 2px, transparent 2px, transparent 12px);
+    background-size: cover;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .btn-neon {
+    @apply relative overflow-hidden inline-flex items-center justify-center rounded-lg px-5 py-3 font-heading tracking-wide transition;
+    color: hsl(var(--primary-foreground));
+    background: linear-gradient(135deg, hsl(var(--brand)) 0%, hsl(var(--brand-2)) 100%);
+    box-shadow: var(--shadow-glow);
   }
+  .btn-neon:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(400px 200px at var(--x,50%) var(--y,50%), hsl(var(--brand) / 0.25), transparent 40%);
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .btn-neon:hover:after { opacity: 1; }
+
+  .card-omni {
+    @apply rounded-xl border bg-card/80 backdrop-blur-md shadow-lg;
+    box-shadow: var(--shadow-elev);
+  }
+
+  .story-link > * {
+    @apply relative inline-block;
+  }
+  .story-link > *::after {
+    content: "";
+    position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: linear-gradient(90deg, hsl(var(--brand)), transparent);
+    transform: scaleX(0); transform-origin: right; transition: transform .3s ease;
+  }
+  .story-link > *:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
 }
