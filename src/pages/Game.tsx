@@ -193,8 +193,11 @@ export default function Game() {
           <h2 className="font-heading text-2xl mb-2">AI Mastermind Challenge</h2>
           <p className="text-muted-foreground mb-4">Ben 10–style voice-enabled quiz. Enter your name and start Level 1.</p>
           <div className="flex flex-col sm:flex-row gap-3 items-start">
+            <label htmlFor="playerName" className="sr-only">Player name</label>
             <input
-              className="w-full sm:w-64 rounded-md bg-background border px-3 py-2"
+              id="playerName"
+              className="input-contrast w-full sm:w-64"
+              placeholder="Enter your name"
               defaultValue={player}
               onBlur={(e)=>{ setPlayer(e.target.value); sessionStorage.setItem("player", e.target.value); }}
               aria-label="Player name"
@@ -233,7 +236,7 @@ export default function Game() {
         <p className="mt-4 text-lg">{current.prompt}</p>
         <div className="mt-4 grid sm:grid-cols-2 gap-3">
           {current.options.map((opt, i) => (
-            <Button key={i} className={`justify-start ${optionsVisible?"":"pointer-events-none opacity-60"}`} variant="outline" onClick={() => selectOption(i)}>
+            <Button key={i} className={`option-card justify-start ${optionsVisible?"":"pointer-events-none opacity-60"}`} variant="outline" onClick={() => selectOption(i)}>
               <span className="font-mono mr-2">{String.fromCharCode(65+i)}.</span> {opt}
             </Button>
           ))}

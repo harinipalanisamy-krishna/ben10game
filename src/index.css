@@ -36,6 +36,10 @@ All colors MUST be HSL.
     --input: 160 14% 20%;
     --ring: 141 90% 50%;
 
+    /* Light surfaces for readable inputs/cards */
+    --surface: 0 0% 100%;
+    --surface-foreground: 0 0% 10%;
+
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 6%;
@@ -87,6 +91,10 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 141 90% 50%;
+
+    /* Light surfaces for readable inputs/cards */
+    --surface: 0 0% 100%;
+    --surface-foreground: 0 0% 10%;
 
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 90%;
@@ -146,4 +154,22 @@ All colors MUST be HSL.
   .story-link > *:hover::after { transform: scaleX(1); transform-origin: left; }
 
   .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
+
+  /* High-contrast input for readability in all modes */
+  .input-contrast {
+    @apply border rounded-md px-3 py-2; 
+    background-color: hsl(var(--surface));
+    color: hsl(var(--surface-foreground));
+  }
+
+  /* Option card buttons styling */
+  .option-card {
+    @apply rounded-lg border transition-transform;
+    background-color: hsl(var(--surface));
+    color: hsl(var(--surface-foreground));
+  }
+  .option-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px hsl(var(--brand) / 0.45);
+  }
 }
