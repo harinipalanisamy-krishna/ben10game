@@ -172,5 +172,45 @@
     outline: 2px solid hsl(var(--brand));
     outline-offset: 2px;
   }
+
+  /* Voice button styling */
+  .voice-button {
+    background: linear-gradient(135deg, var(--brand), var(--brand-glow));
+    color: white;
+    border: 2px solid var(--brand);
+    box-shadow: 0 0 20px var(--brand-glow)/0.5;
+  }
+  
+  .voice-button:hover {
+    box-shadow: 0 0 30px var(--brand-glow)/0.8;
+    border-color: var(--brand-glow);
+  }
+
+  /* Anime runner animation */
+  .anime-runner {
+    filter: drop-shadow(0 0 10px var(--brand-glow));
+    animation: bounce 0.5s ease-in-out infinite alternate;
+  }
+
+  /* Loading spinner with glow */
+  .spinner-glow {
+    width: 60px;
+    height: 60px;
+    border: 4px solid transparent;
+    border-top: 4px solid var(--brand);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px var(--brand-glow)/0.6;
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
