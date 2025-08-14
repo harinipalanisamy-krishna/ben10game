@@ -51,10 +51,10 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
           setTimeout(() => speak('1'), 2000);
           setTimeout(() => speak('Go!'), 3000);
           
-          // Complete after 50+ seconds
+          // Complete after 10 seconds
           setTimeout(() => {
             onComplete();
-          }, 53000);
+          }, 10000);
           
           return 0;
         }

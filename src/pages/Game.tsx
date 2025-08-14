@@ -6,6 +6,7 @@ import { Timer } from "@/components/Timer";
 import { Button } from "@/components/ui/button";
 import { VoiceButton } from "@/components/VoiceButton";
 import { LevelTransition } from "@/components/LevelTransition";
+import { CharacterSelection } from "@/components/CharacterSelection";
 import { toast } from "@/hooks/use-toast";
 
 const ROASTS = [
@@ -107,6 +108,8 @@ function readTTS(text: string) {
 export default function Game() {
   const [level, setLevel] = useState<LevelId | null>(null);
   const [intro, setIntro] = useState(true);
+  const [showCharacterSelection, setShowCharacterSelection] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<any>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [qIndex, setQIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -125,8 +128,20 @@ export default function Game() {
   function beginLevel(lv: LevelId) {
     setLevel(lv);
     setIntro(false);
+    setShowCharacterSelection(false);
     playBgLoop();
     loadQs(lv);
+  }
+
+  function handleCharacterSelect(character: any) {
+    setSelectedCharacter(character);
+    setShowCharacterSelection(false);
+    beginLevel(1);
+  }
+
+  function proceedToCharacterSelection() {
+    setIntro(false);
+    setShowCharacterSelection(true);
   }
 
   function startLevelTransition(lv: LevelId) {
@@ -202,6 +217,28 @@ export default function Game() {
           ? END_COMPLIMENTS[Math.floor(Math.random() * END_COMPLIMENTS.length)]
           : END_ROASTS[Math.floor(Math.random() * END_ROASTS.length)];
         
+        // Voice congratulations
+        const voices = speechSynthesis.getVoices();
+        const femaleVoice = voices.find(voice => 
+          voice.name.includes('Female') || 
+          voice.name.includes('Samantha') || 
+          voice.name.includes('Karen')
+        ) || voices.find(voice => voice.lang.includes('en'));
+        
+        const speak = (text: string) => {
+          const utterance = new SpeechSynthesisUtterance(text);
+          if (femaleVoice) utterance.voice = femaleVoice;
+          utterance.rate = 1.0;
+          utterance.pitch = 1.2;
+          speechSynthesis.speak(utterance);
+        };
+        
+        const congratsMessage = percentage >= 70 
+          ? `Congratulations ${player}! Amazing performance!`
+          : `Good effort ${player}! Keep practicing to improve!`;
+        
+        speak(congratsMessage);
+        
         toast({ 
           title: percentage >= 70 ? "Amazing!" : "Game Over!", 
           description: endMessage 
@@ -214,7 +251,7 @@ export default function Game() {
         // Navigate to end screen after showing message
         setTimeout(() => {
           window.location.href = "/leaderboard";
-        }, 3000);
+        }, 4000);
       }
       return;
     }
@@ -249,7 +286,7 @@ export default function Game() {
     document.title = "Voice of Knowledge — Game";
   }, []);
 
-  if (intro || level === null) {
+  if (intro) {
     return (
       <div className="max-w-2xl mx-auto">
         <section className="card-omni p-8 text-center">
@@ -270,7 +307,7 @@ export default function Game() {
             </div>
             
             <div className="flex justify-center gap-4">
-              <button className="btn-neon text-lg px-6 py-3" onClick={() => beginLevel(1)}>
+              <button className="btn-neon text-lg px-6 py-3" onClick={proceedToCharacterSelection}>
                 Start Adventure
               </button>
               <button className="btn-neon" onClick={() => { setMutedState(!mutedState); setMuted(!mutedState); }}>
@@ -286,6 +323,14 @@ export default function Game() {
         </section>
       </div>
     );
+  }
+
+  if (showCharacterSelection) {
+    return <CharacterSelection onCharacterSelect={handleCharacterSelect} playerName={player} />;
+  }
+
+  if (level === null) {
+    return <div className="card-omni p-6">Loading...</div>;
   }
 
   if (!current) return <div className="card-omni p-6">Loading questions…</div>;
