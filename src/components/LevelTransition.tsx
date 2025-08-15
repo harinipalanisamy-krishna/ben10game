@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimeRunner } from "./AnimeRunner";
-import level1Image from "@/assets/level-1.png";
+import kalamLevelImage from "@/assets/kalam-level.jpg";
 import level2Image from "@/assets/level-2.png";
 import level3Image from "@/assets/level-3.png";
 
@@ -16,8 +16,10 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
   const [showRunner, setShowRunner] = useState(false);
   const [imageOpacity, setImageOpacity] = useState(1);
   
-  const levelImages = [level1Image, level2Image, level3Image];
+  const levelImages = [kalamLevelImage, level2Image, level3Image];
+  const levelTitles = ["Kalam Sir's Level", "Science Level", "Tamil Level"];
   const currentImage = levelImages[(level - 1) % levelImages.length];
+  const currentTitle = levelTitles[(level - 1) % levelTitles.length];
 
   useEffect(() => {
     if (isVisible) {
@@ -26,11 +28,11 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
       setShowRunner(false);
       setImageOpacity(1);
       
-      // Show image for 3 seconds then fade to button
+      // Show image for 10 seconds then fade to button
       const imageTimer = setTimeout(() => {
         setImageOpacity(0);
         setTimeout(() => setStage('button'), 500); // Wait for fade out
-      }, 3000);
+      }, 10000);
       
       return () => clearTimeout(imageTimer);
     }
@@ -95,10 +97,13 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-              <h2 className="text-4xl font-heading text-white drop-shadow-lg">
-                Level {level}
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-center">
+              <h2 className="text-5xl font-heading text-white drop-shadow-2xl mb-2">
+                {currentTitle}
               </h2>
+              <p className="text-2xl font-medium text-white/90 drop-shadow-lg">
+                Level {level}
+              </p>
             </div>
           </div>
         )}

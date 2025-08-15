@@ -24,12 +24,12 @@ export default function Leaderboard() {
         <h3 className="font-heading text-lg mb-3">Created By</h3>
         <div className="grid grid-cols-2 gap-4">
           <figure className="rounded-lg overflow-hidden border">
-            <img src={creator1} alt="Creator 1 - Developer" loading="lazy" className="w-full h-32 object-cover" />
-            <figcaption className="p-2 text-center text-xs text-muted-foreground">Developer 1</figcaption>
+            <img src={creator1} alt="Abijth - Developer" loading="lazy" className="w-full h-32 object-cover" />
+            <figcaption className="p-2 text-center text-xs text-muted-foreground">Abijth</figcaption>
           </figure>
           <figure className="rounded-lg overflow-hidden border">
-            <img src={creator2} alt="Creator 2 - Developer" loading="lazy" className="w-full h-32 object-cover" />
-            <figcaption className="p-2 text-center text-xs text-muted-foreground">Developer 2</figcaption>
+            <img src={creator2} alt="Aniruth - Developer" loading="lazy" className="w-full h-32 object-cover" />
+            <figcaption className="p-2 text-center text-xs text-muted-foreground">Aniruth</figcaption>
           </figure>
         </div>
       </section>
