@@ -252,5 +252,35 @@
       0 15px 40px -10px hsl(var(--brand) / 0.4),
       0 0 30px hsl(var(--brand-glow) / 0.3);
   }
+
+  /* Enhanced level transition animations */
+  .level-image-transition {
+    animation: fade-in 0.5s ease-out, scale-in 0.3s ease-out 0.2s;
+  }
+
+  /* Crossfade effect for smooth transitions */
+  .crossfade-enter {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .crossfade-enter-active {
+    opacity: 1;
+  }
+  
+  .crossfade-exit {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .crossfade-exit-active {
+    opacity: 0;
+  }
+
+  .music-widget {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
