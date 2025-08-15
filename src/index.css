@@ -232,7 +232,7 @@
   }
 
   .character-image-container {
-    @apply p-4 bg-gradient-to-br from-brand/10 to-brand-glow/10;
+    @apply p-4;
     background: linear-gradient(135deg, hsl(var(--brand) / 0.1), hsl(var(--brand-glow) / 0.15));
   }
 
