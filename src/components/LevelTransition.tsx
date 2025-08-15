@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { AnimeRunner } from "./AnimeRunner";
-import level1Image from "@/assets/level-1-real.jpg";
-import level2Image from "@/assets/level-2-real.jpg";
-import level3Image from "@/assets/level-3-real.jpg";
+import level1Image from "@/assets/level-1.png";
+import level2Image from "@/assets/level-2.png";
+import level3Image from "@/assets/level-3.png";
 
 interface LevelTransitionProps {
   level: number;
@@ -92,16 +92,13 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
             <img 
               src={currentImage} 
               alt={`Level ${level} intro`}
-              className="w-full h-full object-cover animate-fade-in"
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-              <h2 className="text-5xl font-heading text-white drop-shadow-2xl animate-scale-in">
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+              <h2 className="text-4xl font-heading text-white drop-shadow-lg">
                 Level {level}
               </h2>
-              <p className="text-xl text-white/90 mt-2 drop-shadow-lg">
-                Get Ready!
-              </p>
             </div>
           </div>
         )}

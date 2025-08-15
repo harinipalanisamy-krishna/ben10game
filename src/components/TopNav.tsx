@@ -1,16 +1,22 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useEffect, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-import { useMusic } from "@/contexts/MusicContext";
+import { setMuted } from "@/utils/sound";
 
 export function TopNav() {
   const [time, setTime] = useState<string>("");
-  const { isMuted, toggleMute } = useMusic();
+  const [isMuted, setIsMuted] = useState(false);
   
   useEffect(() => {
     const id = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
     return () => clearInterval(id);
   }, []);
+  
+  const toggleMute = () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    setMuted(newMutedState);
+  };
 
   return (
     <header className="h-14 border-b flex items-center justify-between px-3">
