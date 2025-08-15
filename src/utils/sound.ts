@@ -4,6 +4,7 @@ let ctx: AudioContext | null = null;
 let bgNode: AudioNode | null = null;
 let masterGain: GainNode | null = null;
 let muted = false;
+let backgroundMusic: HTMLAudioElement | null = null;
 
 export function initAudio() {
   if (!ctx) {
@@ -18,6 +19,7 @@ export function initAudio() {
 export function setMuted(v: boolean) {
   muted = v;
   if (masterGain) masterGain.gain.value = v ? 0 : 0.8;
+  if (backgroundMusic) backgroundMusic.volume = v ? 0 : 0.3;
 }
 
 function playTone(freq: number, duration = 0.15, type: OscillatorType = "sine") {
@@ -77,4 +79,26 @@ export function stopBg() {
 export function playKalamClip() {
   // Simple chime placeholder
   for (let i = 0; i < 4; i++) setTimeout(() => playTone(500 + i * 150, 0.2, "triangle"), i * 220);
+}
+
+export function initBackgroundMusic(audioUrl?: string) {
+  if (backgroundMusic) {
+    backgroundMusic.pause();
+    backgroundMusic = null;
+  }
+  
+  if (audioUrl) {
+    backgroundMusic = new Audio(audioUrl);
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = muted ? 0 : 0.3;
+    backgroundMusic.play().catch(console.warn);
+  }
+}
+
+export function pauseBackgroundMusic() {
+  if (backgroundMusic) backgroundMusic.pause();
+}
+
+export function resumeBackgroundMusic() {
+  if (backgroundMusic && !muted) backgroundMusic.play().catch(console.warn);
 }

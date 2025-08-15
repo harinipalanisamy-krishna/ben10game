@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { AnimeRunner } from "./AnimeRunner";
+import level1Image from "@/assets/level-1.png";
+import level2Image from "@/assets/level-2.png";
+import level3Image from "@/assets/level-3.png";
 
 interface LevelTransitionProps {
   level: number;
@@ -8,15 +11,28 @@ interface LevelTransitionProps {
 }
 
 export function LevelTransition({ level, onComplete, isVisible }: LevelTransitionProps) {
-  const [stage, setStage] = useState<'button' | 'countdown' | 'loading'>('button');
+  const [stage, setStage] = useState<'image' | 'button' | 'countdown' | 'loading'>('image');
   const [countdown, setCountdown] = useState(3);
   const [showRunner, setShowRunner] = useState(false);
+  const [imageOpacity, setImageOpacity] = useState(1);
+  
+  const levelImages = [level1Image, level2Image, level3Image];
+  const currentImage = levelImages[(level - 1) % levelImages.length];
 
   useEffect(() => {
     if (isVisible) {
-      setStage('button');
+      setStage('image');
       setCountdown(3);
       setShowRunner(false);
+      setImageOpacity(1);
+      
+      // Show image for 3 seconds then fade to button
+      const imageTimer = setTimeout(() => {
+        setImageOpacity(0);
+        setTimeout(() => setStage('button'), 500); // Wait for fade out
+      }, 3000);
+      
+      return () => clearTimeout(imageTimer);
     }
   }, [isVisible]);
 
@@ -68,6 +84,25 @@ export function LevelTransition({ level, onComplete, isVisible }: LevelTransitio
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-lg">
       <div className="text-center space-y-8">
+        {stage === 'image' && (
+          <div 
+            className="fixed inset-0 z-60 flex items-center justify-center transition-opacity duration-500"
+            style={{ opacity: imageOpacity }}
+          >
+            <img 
+              src={currentImage} 
+              alt={`Level ${level} intro`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+              <h2 className="text-4xl font-heading text-white drop-shadow-lg">
+                Level {level}
+              </h2>
+            </div>
+          </div>
+        )}
+        
         {stage === 'button' && (
           <div className="animate-fade-in">
             <h2 className="text-4xl font-heading mb-6 text-white">Ready for Level {level}?</h2>

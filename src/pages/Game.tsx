@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { VoiceButton } from "@/components/VoiceButton";
 import { LevelTransition } from "@/components/LevelTransition";
 import { CharacterSelection } from "@/components/CharacterSelection";
+import { BackgroundMusic } from "@/components/BackgroundMusic";
 import { toast } from "@/hooks/use-toast";
 
 const ROASTS = [
@@ -375,6 +376,8 @@ export default function Game() {
         isVisible={showLevelTransition}
         onComplete={completeLevelTransition}
       />
+      
+      <BackgroundMusic />
     </>
   );
 }

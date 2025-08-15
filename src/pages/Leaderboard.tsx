@@ -1,5 +1,5 @@
-import portrait1 from "@/assets/portrait1.jpg";
-import portrait2 from "@/assets/portrait2.jpg";
+import creator1 from "@/assets/creator-1.png";
+import creator2 from "@/assets/creator-2.png";
 
 export default function Leaderboard() {
   const data: Array<{name:string;score:number;date:string}> = JSON.parse(sessionStorage.getItem("leaderboard") || "[]");
@@ -24,12 +24,12 @@ export default function Leaderboard() {
         <h3 className="font-heading text-lg mb-3">Created By</h3>
         <div className="grid grid-cols-2 gap-4">
           <figure className="rounded-lg overflow-hidden border">
-            <img src={portrait1} alt="Creator portrait 1 neon" loading="lazy" />
-            <figcaption className="p-2 text-center text-xs text-muted-foreground">Creator 1</figcaption>
+            <img src={creator1} alt="Creator 1 - Developer" loading="lazy" className="w-full h-32 object-cover" />
+            <figcaption className="p-2 text-center text-xs text-muted-foreground">Developer 1</figcaption>
           </figure>
           <figure className="rounded-lg overflow-hidden border">
-            <img src={portrait2} alt="Creator portrait 2 neon" loading="lazy" />
-            <figcaption className="p-2 text-center text-xs text-muted-foreground">Creator 2</figcaption>
+            <img src={creator2} alt="Creator 2 - Developer" loading="lazy" className="w-full h-32 object-cover" />
+            <figcaption className="p-2 text-center text-xs text-muted-foreground">Developer 2</figcaption>
           </figure>
         </div>
       </section>
