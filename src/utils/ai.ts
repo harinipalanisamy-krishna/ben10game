@@ -97,7 +97,17 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "How is Dr. Kalam remembered today?", o: ["As an inspiration for all","As a politician","As a businessman","As an entertainer"], a: 0 },
       { p: "Dr. Kalam's greatest achievement was?", o: ["Inspiring millions of young minds","Building missiles","Becoming President","Writing books"], a: 0 },
       { p: "What did Dr. Kalam say about teachers?", o: ["Best teachers are those who show where to look","Teachers should be strict","Teachers know everything","Teachers should lecture only"], a: 0 },
-      { p: "Dr. Kalam's life teaches us?", o: ["Hard work and dedication lead to success","Success comes by chance","Education is not important","Dreams are useless"], a: 0 }
+      { p: "Dr. Kalam's life teaches us?", o: ["Hard work and dedication lead to success","Success comes by chance","Education is not important","Dreams are useless"], a: 0 },
+      { p: "What is Dr. Kalam popularly known as?", o: ["Father of the Nation","Missile Man of India","Iron Man of India","Bharat Ratna Winner"], a: 1 },
+      { p: "Which book was written by Dr. A.P.J. Abdul Kalam?", o: ["Discovery of India","My Experiments with Truth","Wings of Fire","Ignited Minds"], a: 2 },
+      { p: "In which year did Dr. Kalam become the President of India?", o: ["2005","1997","2010","2002"], a: 3 },
+      { p: "Dr. Kalam was born in which state?", o: ["Tamil Nadu","Kerala","Karnataka","Andhra Pradesh"], a: 0 },
+      { p: "Which island is named after Dr. Kalam?", o: ["Sriharikota","Wheeler Island","Lakshadweep","Andaman"], a: 1 },
+      { p: "What profession did Kalam pursue before becoming President?", o: ["Politician","Teacher","Scientist","Writer"], a: 2 },
+      { p: "Which award did Kalam receive in 1997?", o: ["Padma Shri","Padma Vibhushan","Noble Prize","Bharat Ratna"], a: 3 },
+      { p: "Kalam worked with which Indian space organization?", o: ["ISRO","DRDO","NASA","HAL"], a: 0 },
+      { p: "What was Kalam's dream for India by 2020?", o: ["Superpower in Sports","Developed Nation","Richest Country","World Leader in Fashion"], a: 1 },
+      { p: "Which subject did Kalam love teaching after presidency?", o: ["Mathematics","History","Science","Economics"], a: 2 }
     ],
     2: [
       { p: "What is the chemical symbol for water?", o: ["H2O","O2H","HO2","OH"], a: 0 },
@@ -149,7 +159,17 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "Which element is essential for photosynthesis?", o: ["Carbon","Nitrogen","Phosphorus","Sulfur"], a: 0 },
       { p: "What is the largest desert in the world?", o: ["Antarctica","Sahara","Gobi","Arabian"], a: 0 },
       { p: "How many valves does the human heart have?", o: ["4","2","3","6"], a: 0 },
-      { p: "What is the study of stars and planets called?", o: ["Astronomy","Astrology","Astrophysics","Cosmology"], a: 0 }
+      { p: "What is the study of stars and planets called?", o: ["Astronomy","Astrology","Astrophysics","Cosmology"], a: 0 },
+      { p: "Water boils at what temperature at sea level?", o: ["90°C","100°C","120°C","80°C"], a: 1 },
+      { p: "Who invented the telephone?", o: ["Thomas Edison","Nikola Tesla","Alexander Graham Bell","James Watt"], a: 2 },
+      { p: "Which planet is known as the Red Planet?", o: ["Venus","Jupiter","Saturn","Mars"], a: 3 },
+      { p: "What gas do humans exhale?", o: ["Carbon Dioxide","Oxygen","Nitrogen","Hydrogen"], a: 0 },
+      { p: "The hardest substance on Earth is?", o: ["Iron","Diamond","Gold","Platinum"], a: 1 },
+      { p: "Electricity is measured in?", o: ["Joules","Newtons","Volts","Hertz"], a: 2 },
+      { p: "Which part of the plant makes food?", o: ["Root","Stem","Flower","Leaf"], a: 3 },
+      { p: "The chemical symbol for water is?", o: ["H₂O","CO₂","O₂","NaCl"], a: 0 },
+      { p: "Which vitamin is produced in the human body when exposed to sunlight?", o: ["Vitamin A","Vitamin D","Vitamin C","Vitamin K"], a: 1 },
+      { p: "Who is known as the father of electricity?", o: ["Albert Einstein","Isaac Newton","Michael Faraday","Archimedes"], a: 2 }
     ],
     3: [
       { p: "Which is the oldest Tamil literary work?", o: ["Tholkappiyam","Silappathikaram","Purananuru","Manimekalai"], a: 0 },
@@ -201,7 +221,17 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "Which Tamil text is considered a guide for ethical living?", o: ["Thirukkural","Silappatikaram","Kambaramayanam","Periyapuranam"], a: 0 },
       { p: "Tamil New Year typically falls in which month?", o: ["April","January","March","May"], a: 0 },
       { p: "The Tamil martial art form is called?", o: ["Silambam","Kalaripayattu","Gatka","Thang-ta"], a: 0 },
-      { p: "Tamil cultural identity is strongly associated with?", o: ["All of the above","Language","Literature","Traditions"], a: 0 }
+      { p: "Tamil cultural identity is strongly associated with?", o: ["All of the above","Language","Literature","Traditions"], a: 0 },
+      { p: "Who is called the 'Father of Tamil Literature'?", o: ["Bharathiyar","Ilango Adigal","Kambar","Tholkappiyar"], a: 3 },
+      { p: "Which is the oldest Tamil grammar book?", o: ["Tholkappiyam","Silappathikaram","Kamba Ramayanam","Tirukkural"], a: 0 },
+      { p: "Who wrote Tirukkural?", o: ["Kambar","Thiruvalluvar","Bharathidasan","Avvaiyar"], a: 1 },
+      { p: "What is the symbol of Tamil language pride?", o: ["Bharathiyar Songs","Silappathikaram","Tamil Thai Valthu","Pongal"], a: 2 },
+      { p: "Which festival is considered Tamil New Year?", o: ["Pongal","Diwali","Aadi Perukku","Puthandu"], a: 3 },
+      { p: "Which Tamil poet is known as Mahakavi?", o: ["Bharathiyar","Kambar","Thiruvalluvar","Avvaiyar"], a: 0 },
+      { p: "Who composed the epic Silappathikaram?", o: ["Kambar","Ilango Adigal","Bharathidasan","Periyar"], a: 1 },
+      { p: "Which river is praised in many Tamil poems?", o: ["Ganga","Yamuna","Kaveri","Krishna"], a: 2 },
+      { p: "Which Tamil king is associated with the legend of giving away his kingdom?", o: ["Karikalan","Rajaraja Chola","Pandian","Pari"], a: 3 },
+      { p: "The Tamil classical dance form is?", o: ["Bharatanatyam","Kathak","Odissi","Kathakali"], a: 0 }
     ],
   };
   const out: any[] = [];
