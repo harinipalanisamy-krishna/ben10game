@@ -107,7 +107,18 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "Which award did Kalam receive in 1997?", o: ["Padma Shri","Padma Vibhushan","Noble Prize","Bharat Ratna"], a: 3 },
       { p: "Kalam worked with which Indian space organization?", o: ["ISRO","DRDO","NASA","HAL"], a: 0 },
       { p: "What was Kalam's dream for India by 2020?", o: ["Superpower in Sports","Developed Nation","Richest Country","World Leader in Fashion"], a: 1 },
-      { p: "Which subject did Kalam love teaching after presidency?", o: ["Mathematics","History","Science","Economics"], a: 2 }
+      { p: "Which subject did Kalam love teaching after presidency?", o: ["Mathematics","History","Science","Economics"], a: 2 },
+      // NEW QUESTIONS - 10 more for Level 1
+      { p: "Where was Dr. A.P.J. Abdul Kalam born?", o: ["Chennai","Madurai","Rameswaram","Trichy"], a: 2 },
+      { p: "What is the nickname of Dr. Kalam?", o: ["Iron Man of India","Father of the Nation","Young Scientist","Missile Man of India"], a: 3 },
+      { p: "Kalam served as which number President of India?", o: ["10th","11th","12th","13th"], a: 1 },
+      { p: "Which subject did Kalam love teaching most?", o: ["Physics","Aerospace","Mathematics","Biology"], a: 2 },
+      { p: "What was the name of Kalam's autobiography?", o: ["Wings of Fire","Ignited Minds","My Experiments with Truth","Spirit of India"], a: 0 },
+      { p: "Dr. Kalam worked in which two major Indian space/defense organizations?", o: ["ISRO & DRDO","BARC & HAL","CSIR & TATA","ONGC & BEL"], a: 0 },
+      { p: "In which year was Dr. Kalam awarded Bharat Ratna?", o: ["1995","1997","2000","2002"], a: 1 },
+      { p: "Which rocket project earned Kalam the title 'Missile Man'?", o: ["Agni & Prithvi","PSLV","SLV-3","INSAT"], a: 0 },
+      { p: "Kalam passed away while delivering a lecture at?", o: ["IIT Delhi","IIM Shillong","Anna University","NIT Trichy"], a: 1 },
+      { p: "Kalam always encouraged students to?", o: ["Dream big","Study abroad","Join politics","Avoid technology"], a: 0 }
     ],
     2: [
       { p: "What is the chemical symbol for water?", o: ["H2O","O2H","HO2","OH"], a: 0 },
@@ -169,7 +180,18 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "Which part of the plant makes food?", o: ["Root","Stem","Flower","Leaf"], a: 3 },
       { p: "The chemical symbol for water is?", o: ["H₂O","CO₂","O₂","NaCl"], a: 0 },
       { p: "Which vitamin is produced in the human body when exposed to sunlight?", o: ["Vitamin A","Vitamin D","Vitamin C","Vitamin K"], a: 1 },
-      { p: "Who is known as the father of electricity?", o: ["Albert Einstein","Isaac Newton","Michael Faraday","Archimedes"], a: 2 }
+      { p: "Who is known as the father of electricity?", o: ["Albert Einstein","Isaac Newton","Michael Faraday","Archimedes"], a: 2 },
+      // NEW QUESTIONS - 10 more for Level 2
+      { p: "What planet is known as the Red Planet?", o: ["Venus","Jupiter","Mars","Saturn"], a: 2 },
+      { p: "What is H2O commonly known as?", o: ["Hydrogen Peroxide","Water","Steam","Ice"], a: 1 },
+      { p: "Who discovered gravity?", o: ["Albert Einstein","Galileo","James Watt","Isaac Newton"], a: 3 },
+      { p: "The speed of light is approximately?", o: ["1.5 × 10^6 m/s","9.8 m/s^2","3 × 10^8 m/s","5 × 10^10 m/s"], a: 2 },
+      { p: "Which gas do humans exhale?", o: ["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"], a: 2 },
+      { p: "The human brain is part of which system?", o: ["Digestive system","Respiratory system","Circulatory system","Nervous system"], a: 3 },
+      { p: "What is the chemical symbol for Gold?", o: ["Ag","Gd","Au","Go"], a: 2 },
+      { p: "Earth's only natural satellite is?", o: ["Mars","Titan","The Moon","Europa"], a: 2 },
+      { p: "Which vitamin is produced when skin is exposed to sunlight?", o: ["Vitamin A","Vitamin C","Vitamin D","Vitamin B12"], a: 2 },
+      { p: "Which scientist proposed the Theory of Relativity?", o: ["Newton","Galileo","Tesla","Einstein"], a: 3 }
     ],
     3: [
       { p: "Which is the oldest Tamil literary work?", o: ["Tholkappiyam","Silappathikaram","Purananuru","Manimekalai"], a: 0 },
@@ -231,7 +253,18 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
       { p: "Who composed the epic Silappathikaram?", o: ["Kambar","Ilango Adigal","Bharathidasan","Periyar"], a: 1 },
       { p: "Which river is praised in many Tamil poems?", o: ["Ganga","Yamuna","Kaveri","Krishna"], a: 2 },
       { p: "Which Tamil king is associated with the legend of giving away his kingdom?", o: ["Karikalan","Rajaraja Chola","Pandian","Pari"], a: 3 },
-      { p: "The Tamil classical dance form is?", o: ["Bharatanatyam","Kathak","Odissi","Kathakali"], a: 0 }
+      { p: "The Tamil classical dance form is?", o: ["Bharatanatyam","Kathak","Odissi","Kathakali"], a: 0 },
+      // NEW QUESTIONS - 10 more for Level 3
+      { p: "Who is called the 'Father of Tamil Literature'?", o: ["Thiruvalluvar","Ilango Adigal","Bharathiyar","Agastya"], a: 3 },
+      { p: "Thirukkural has how many couplets?", o: ["1500","2000","1200","1330"], a: 3 },
+      { p: "Silappatikaram was written by?", o: ["Kamban","Thiruvalluvar","Avvaiyar","Ilango Adigal"], a: 3 },
+      { p: "Which Tamil king supported arts and literature greatly?", o: ["Ashoka","Krishna Devaraya","Akbar","Raja Raja Chola"], a: 3 },
+      { p: "Bharathiyar is also known as?", o: ["Vallal","Kavi Chakravarthy","Pulavar","Mahakavi"], a: 3 },
+      { p: "What is the Tamil word for 'Education'?", o: ["Arivu","Mozhi","Puthagam","Kalvi"], a: 3 },
+      { p: "Which Sangam literature is about love and war?", o: ["Tholkappiyam","Pathupattu","Silappatikaram","Ettuthogai"], a: 3 },
+      { p: "Who is the author of 'Manimekalai'?", o: ["Avvaiyar","Kambar","Ilango","Sattanar"], a: 3 },
+      { p: "Which Tamil classic deals with Tamil grammar?", o: ["Thirukkural","Silappatikaram","Agananuru","Tholkappiyam"], a: 3 },
+      { p: "The Tamil month 'Aadi' is known for which festival?", o: ["Pongal","Deepavali","Karthigai Deepam","Aadi Perukku"], a: 3 }
     ],
   };
   const out: any[] = [];
@@ -241,7 +274,20 @@ function fallbackQuestions(level: LevelId, count: number, used: Set<string>) {
   for (let i = 0; i < Math.min(count, idxs.length); i++) {
     const ii = idxs[i];
     const it = pool[ii];
-    out.push({ id: `L${level}-${ii}`, level, prompt: it.p, options: it.o, answerIndex: it.a });
+    
+    // Shuffle options while maintaining correct answer
+    const shuffledOptions = [...it.o];
+    const correctAnswer = shuffledOptions[it.a];
+    shuffle(shuffledOptions);
+    const newAnswerIndex = shuffledOptions.indexOf(correctAnswer);
+    
+    out.push({ 
+      id: `L${level}-${ii}`, 
+      level, 
+      prompt: it.p, 
+      options: shuffledOptions, 
+      answerIndex: newAnswerIndex 
+    });
   }
   return out;
 }
